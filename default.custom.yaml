@@ -1,13 +1,5 @@
-customization:
-  distribution_code_name: Weasel
-  distribution_version: 0.15.0.0
-  generator: "Rime::SwitcherSettings"
-  modified_time: "Fri Jun  9 10:33:49 2023"
-  rime_version: 1.8.5
 patch:
-  key_binder:
-    bindings: [{accept: "Control+p", send: Up, when: composing}, {accept: "Control+n", send: Down, when: composing}, {accept: "Control+b", send: Left, when: composing}, {accept: "Control+f", send: Right, when: composing}, {accept: "Control+a", send: Home, when: composing}, {accept: "Control+e", send: End, when: composing}, {accept: "Control+d", send: Delete, when: composing}, {accept: "Control+k", send: "Shift+Delete", when: composing}, {accept: "Control+h", send: BackSpace, when: composing}, {accept: "Control+u", send: Escape, when: composing}, {accept: "Control+bracketleft", send: Escape, when: composing}, {accept: "Shift+Tab", send: "Shift+Left", when: composing}, {accept: Tab, send: "Shift+Right", when: composing}, {accept: comma, send: Page_Up, when: paging}, {accept: period, send: Page_Down, when: has_menu}, {accept: "Control+period", toggle: ascii_punct, when: always}]
   schema_list:
-    - {schema: double_pinyin_flypy}
-  "switcher/hotkeys":
-    - "Control+grave"
+    - schema: double_pinyin_flypy  # 小鹤双拼
+    - schema: rime_mint_flypy      # 薄荷拼音-小鹤混输方案
+  "save_options/+": ascii_mode  # 中英文
