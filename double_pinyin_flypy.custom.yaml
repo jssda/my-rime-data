@@ -1,50 +1,29 @@
 patch:
-  ascii_composer:
-    good_old_caps_lock: true
-    switch_key:
-      Shift_L: clear
-      Shift_R: commit_code
-  
-  schema/name: 小鹤双拼
-  switches:
+  "switches":
     - name: ascii_mode
-      reset: 1
-      states: [ 中文, 西文 ]
+      states: [ 中文, 英文 ]
+    - name: ascii_punct
+      states: [ "。，", "．，" ]
     - name: full_shape
       states: [ 半角, 全角 ]
-    - name: simplification
+      reset: 0
+    - name: emoji_suggestion
+      states: [ "😣️","😁️"]
       reset: 1
-      states: [ 漢字, 汉字 ]
-    - name: ascii_punct
-      states: [ 。，, ．， ]
-  punctuator:
-    import_preset: symbols
-    # 自定义快捷符号输入
-    # symbols:
-    #   "/fs": [½, ‰, ¼, ⅓, ⅔, ¾, ⅒ ]
-    half_shape:
-      "#": "#"
-      "*": "*"
-      "`": "`"
-      "~": "~"
-      "@": "@"
-      "=": "="
-      "/": "/"
-      '\': ['\','、']
-      # "_" : "──"
-      "'": {pair: ["「", "」"]}
-      "[": ["【", "["]
-      "]": ["】", "]"]
-      "$": ["¥", "$", "€", "£", "¢", "¤"]
-      "<": ["《", "〈", "«", "<"]
-      ">": ["》", "〉", "»", ">"]
-  recognizer/patterns/punct: "^/([0-9]0?|[A-Za-z]+)$"
-  translator:
-    dictionary: luna_pinyin.extended
-    enable_completion: true
-    preedit_format: {}
-    enable_user_dict: true
-    enable_sentence: true
-    user_dict: myDoubleDict
-    db_class: tabledb
+    - name: transcription
+      states: [ 简体 , 繁体 ]
+    - name: tone_display                  #开启后在输入编码的位置实时转换为带声调全拼，不开启则采用系统配置，影响的是preedit_format,归属：super_preedit.lua
+      states: [ 声杳, 声起 ]
+      reset: 0
+    - name: chaifen        # 拆字滤镜
+      states: [ 🙈, 🐵 ]     # 快捷键 「Control+Shift+C」
+      reset: 0
 
+  "translator/preedit_format/=":
+      - xform/ü/v/  # ü 显示为 v
+
+  "key_binder/bindings/+": 
+    - { when: composing, accept: Control+h, send: BackSpace }     # 使用快捷键ctrl+h删除
+
+  # 候选词个数 
+  "menu/page_size": 5
