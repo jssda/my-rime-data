@@ -1,0 +1,12 @@
+patch:
+  "app_options/+": #配置特定应用 vim和默认为英文ascii输入
+    Code.exe: {inline_preedit: true, vim_mode: true, ascii_mode: true}  # vsCode
+    cmd.exe: {ascii_mode: true} # CMD 
+    idea64.exe: {inline_preedit: true, vim_mode: true, ascii_mode: true} # idea使用vim
+    WindowsTerminal.exe: {inline_preedit: true, vim_mode: true, ascii_mode: true} # cmd相关
+    gvim.exe: {inline_preedit: true, vim_mode: true, ascii_mode: true} # gvim
+    nvim.exe: {inline_preedit: true, vim_mode: true, ascii_mode: true}
+    nvim-qt.exe: {inline_preedit: true, vim_mode: true, ascii_mode: true}
+    neovide.exe: {inline_preedit: true, vim_mode: true, ascii_mode: true}
+  "style/color_scheme": metroblue 
+  "style/inline_preedit": true  # 试用一下行内预输入好不好用
